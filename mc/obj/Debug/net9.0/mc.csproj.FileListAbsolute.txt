@@ -1,0 +1,15 @@
+/Users/mac/Desktop/Minsk/mc/bin/Debug/net9.0/mc
+/Users/mac/Desktop/Minsk/mc/bin/Debug/net9.0/mc.deps.json
+/Users/mac/Desktop/Minsk/mc/bin/Debug/net9.0/mc.runtimeconfig.json
+/Users/mac/Desktop/Minsk/mc/bin/Debug/net9.0/mc.dll
+/Users/mac/Desktop/Minsk/mc/bin/Debug/net9.0/mc.pdb
+/Users/mac/Desktop/Minsk/mc/obj/Debug/net9.0/mc.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mac/Desktop/Minsk/mc/obj/Debug/net9.0/mc.AssemblyInfoInputs.cache
+/Users/mac/Desktop/Minsk/mc/obj/Debug/net9.0/mc.AssemblyInfo.cs
+/Users/mac/Desktop/Minsk/mc/obj/Debug/net9.0/mc.csproj.CoreCompileInputs.cache
+/Users/mac/Desktop/Minsk/mc/obj/Debug/net9.0/mc.sourcelink.json
+/Users/mac/Desktop/Minsk/mc/obj/Debug/net9.0/mc.dll
+/Users/mac/Desktop/Minsk/mc/obj/Debug/net9.0/refint/mc.dll
+/Users/mac/Desktop/Minsk/mc/obj/Debug/net9.0/mc.pdb
+/Users/mac/Desktop/Minsk/mc/obj/Debug/net9.0/mc.genruntimeconfig.cache
+/Users/mac/Desktop/Minsk/mc/obj/Debug/net9.0/ref/mc.dll
