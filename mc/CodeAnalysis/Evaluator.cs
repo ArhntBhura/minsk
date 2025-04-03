@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Minsk.CodeAnalysis
 {
-    class Evaluator
+    public sealed class Evaluator
     {
         private readonly ExpressionSyntax _root;
 
@@ -22,8 +22,8 @@ namespace Minsk.CodeAnalysis
             // BinaryExpression
             // NumberExpression
 
-            if (node is NumberExpressionSyntax n)
-                return (int)n.NumberToken.Value;
+            if (node is LiteralExpressionSyntax n)
+                return (int)n.LiteralToken.Value;
             if (node is BinaryExpressionSyntax b)
             {
                 var left = EvaluateExpression(b.Left);
