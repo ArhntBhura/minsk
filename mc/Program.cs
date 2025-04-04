@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using Microsoft.VisualBasic;
 using Minsk.CodeAnalysis;
+using Minsk.CodeAnalysis.Syntax;
 
 namespace Minsk
 {
