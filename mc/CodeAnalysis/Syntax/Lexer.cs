@@ -45,7 +45,7 @@ namespace Minsk.CodeAnalysis.Syntax
                 var length = _position - start;
                 var text = _text.Substring(start, length);
                 if (!int.TryParse(text, out var value))
-                    _diagnostics.Add($"ERROR: The nnumber {text} cannot be represented in Int32");
+                    _diagnostics.Add($"ERROR: The {text} cannot be represented in Int32");
                 return new SyntaxToken(SyntaxKind.NumberToken, start, text, value);
             }
 
