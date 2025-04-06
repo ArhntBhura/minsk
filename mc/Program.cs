@@ -51,8 +51,8 @@ namespace Minsk
                 if (!diagnostics.Any())
                 {
                     var evaluate = new Evaluator(boundExpression);
-                    int ans = evaluate.Evaluate();
-                    Console.WriteLine(ans);
+                    var result = evaluate.Evaluate();
+                    Console.WriteLine(result);
                 }
                 else
                 {
