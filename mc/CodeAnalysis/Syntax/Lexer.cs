@@ -86,6 +86,8 @@ namespace Minsk.CodeAnalysis.Syntax
                 case ')':
                     return new SyntaxToken(SyntaxKind.CloseParenthesisToken, _position++, ")", null);
                 case '!':
+                    if (LookAhead == '=')
+                        return new SyntaxToken(SyntaxKind.NotEqualsToken, _position += 2, "!=", null);
                     return new SyntaxToken(SyntaxKind.BangToken, _position++, "!", null);
                 case '&':
                     if (LookAhead == '&')
@@ -94,6 +96,10 @@ namespace Minsk.CodeAnalysis.Syntax
                 case '|':
                     if (LookAhead == '|')
                         return new SyntaxToken(SyntaxKind.PipePipeToken, _position += 2, "||", null);
+                    break;
+                case '=':
+                    if (LookAhead == '=')
+                        return new SyntaxToken(SyntaxKind.EqualsEqualsToken, _position += 2, "==", null);
                     break;
             }
 
