@@ -4,13 +4,13 @@ namespace Minsk.CodeAnalysis.Syntax
     {
         private readonly string _text;
         private int _position;
-        private List<string> _diagnostics = new List<string>();
+        private DiagnosticBag _diagnostics = new DiagnosticBag();
 
         public Lexer(string text)
         {
             _text = text;
         }
-        public IEnumerable<string> Diagnostics => _diagnostics;
+        public DiagnosticBag Diagnostics => _diagnostics;
         private char Current => Peek(0);
         private char LookAhead => Peek(1);
 
@@ -38,21 +38,21 @@ namespace Minsk.CodeAnalysis.Syntax
                 return new SyntaxToken(SyntaxKind.EndOfFileToken, _position, "\0", null);
             }
 
+            var start = _position;
+
             if (char.IsDigit(Current))
             {
-                var start = _position;
                 while (char.IsDigit(Current))
                     Next();
                 var length = _position - start;
                 var text = _text.Substring(start, length);
                 if (!int.TryParse(text, out var value))
-                    _diagnostics.Add($"ERROR: The {text} cannot be represented in Int32");
+                    _diagnostics.ReportInvalidNumber(new TextSpan(start, length), text, typeof(int));
                 return new SyntaxToken(SyntaxKind.NumberToken, start, text, value);
             }
 
             if (char.IsWhiteSpace(Current))
             {
-                var start = _position;
                 while (char.IsWhiteSpace(Current))
                     Next();
                 var length = _position - start;
@@ -62,7 +62,6 @@ namespace Minsk.CodeAnalysis.Syntax
 
             if (char.IsLetter(Current))
             {
-                var start = _position;
                 while (char.IsLetter(Current))
                     Next();
                 var length = _position - start;
@@ -87,23 +86,35 @@ namespace Minsk.CodeAnalysis.Syntax
                     return new SyntaxToken(SyntaxKind.CloseParenthesisToken, _position++, ")", null);
                 case '!':
                     if (LookAhead == '=')
-                        return new SyntaxToken(SyntaxKind.NotEqualsToken, _position += 2, "!=", null);
+                    {
+                        _position += 2;
+                        return new SyntaxToken(SyntaxKind.NotEqualsToken, start, "!=", null);
+                    }
                     return new SyntaxToken(SyntaxKind.BangToken, _position++, "!", null);
                 case '&':
                     if (LookAhead == '&')
-                        return new SyntaxToken(SyntaxKind.AmpersandAmpersandToken, _position += 2, "&&", null);
+                    {
+                        _position += 2;
+                        return new SyntaxToken(SyntaxKind.AmpersandAmpersandToken, start, "&&", null);
+                    }
                     break;
                 case '|':
                     if (LookAhead == '|')
-                        return new SyntaxToken(SyntaxKind.PipePipeToken, _position += 2, "||", null);
+                    {
+                        _position += 2;
+                        return new SyntaxToken(SyntaxKind.PipePipeToken, start, "||", null);
+                    }
                     break;
                 case '=':
                     if (LookAhead == '=')
-                        return new SyntaxToken(SyntaxKind.EqualsEqualsToken, _position += 2, "==", null);
+                    {
+                        _position += 2;
+                        return new SyntaxToken(SyntaxKind.EqualsEqualsToken, start, "==", null);
+                    }
                     break;
             }
 
-            _diagnostics.Add($"Error : bad character in input: `{Current}`");
+            _diagnostics.ReportBadCharacter(_position, Current);
             return new SyntaxToken(SyntaxKind.BadToken, _position++, _text.Substring(_position - 1, 1), null);
         }
     }

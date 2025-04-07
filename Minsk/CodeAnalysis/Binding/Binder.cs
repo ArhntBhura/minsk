@@ -5,8 +5,8 @@ namespace Minsk.CodeAnalysis.Binding
 {
     internal sealed class Binder
     {
-        private readonly List<string> _diagnostics = new List<string>();
-        public IEnumerable<string> Diagnostics => _diagnostics;
+        private readonly DiagnosticBag _diagnostics = new DiagnosticBag();
+        public DiagnosticBag Diagnostics => _diagnostics;
 
         public BoundExpression BindExpression(ExpressionSyntax syntax)
         {
@@ -38,7 +38,7 @@ namespace Minsk.CodeAnalysis.Binding
             var boundOperatorKind = BoundBinaryOperator.Bind(syntax.OperatorToken.Kind, boundLeft.Type, boundRight.Type);
             if (boundOperatorKind == null)
             {
-                _diagnostics.Add($"ERROR: Binary Operator {syntax.OperatorToken.Text} is not defined for operand {boundLeft.Type} and operand {boundRight.Type}");
+                _diagnostics.ReportUndefinedBinaryOperator(syntax.OperatorToken.Span, syntax.OperatorToken.Text, boundLeft.Type, boundRight.Type);
                 return boundLeft;
             }
             return new BoundBinaryExpression(boundLeft, boundOperatorKind, boundRight);
@@ -50,7 +50,7 @@ namespace Minsk.CodeAnalysis.Binding
             var boundOperatorKind = BoundUnaryOperator.Bind(syntax.OperatorToken.Kind, boundOperand.Type);
             if (boundOperatorKind == null)
             {
-                _diagnostics.Add($"ERROR: The unary operator {syntax.OperatorToken.Text} is not defined for operand {boundOperand.Type}");
+                _diagnostics.ReportUndefinedUnaryOperator(syntax.OperatorToken.Span, syntax.OperatorToken.Text, boundOperand.Type);
                 return boundOperand;
             }
             return new BoundUnaryExpression(boundOperatorKind, boundOperand);

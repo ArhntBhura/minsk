@@ -22,7 +22,7 @@ namespace Minsk.CodeAnalysis
 
             var evaluator = new Evaluator(boundExpression);
             var value = evaluator.Evaluate();
-            return new EvaluationResult(Array.Empty<string>(), value);
+            return new EvaluationResult(Array.Empty<Diagnostic>(), value);
         }
     }
 }
