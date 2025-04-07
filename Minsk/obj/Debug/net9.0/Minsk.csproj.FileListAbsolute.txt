@@ -1,0 +1,12 @@
+/Users/mac/Desktop/minsk/Minsk/bin/Debug/net9.0/Minsk.deps.json
+/Users/mac/Desktop/minsk/Minsk/bin/Debug/net9.0/Minsk.dll
+/Users/mac/Desktop/minsk/Minsk/bin/Debug/net9.0/Minsk.pdb
+/Users/mac/Desktop/minsk/Minsk/obj/Debug/net9.0/Minsk.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mac/Desktop/minsk/Minsk/obj/Debug/net9.0/Minsk.AssemblyInfoInputs.cache
+/Users/mac/Desktop/minsk/Minsk/obj/Debug/net9.0/Minsk.AssemblyInfo.cs
+/Users/mac/Desktop/minsk/Minsk/obj/Debug/net9.0/Minsk.csproj.CoreCompileInputs.cache
+/Users/mac/Desktop/minsk/Minsk/obj/Debug/net9.0/Minsk.sourcelink.json
+/Users/mac/Desktop/minsk/Minsk/obj/Debug/net9.0/Minsk.dll
+/Users/mac/Desktop/minsk/Minsk/obj/Debug/net9.0/refint/Minsk.dll
+/Users/mac/Desktop/minsk/Minsk/obj/Debug/net9.0/Minsk.pdb
+/Users/mac/Desktop/minsk/Minsk/obj/Debug/net9.0/ref/Minsk.dll
