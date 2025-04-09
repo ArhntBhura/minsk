@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+
 namespace Minsk.CodeAnalysis.Syntax
 {
     public sealed class BinaryExpressionSyntax : ExpressionSyntax
