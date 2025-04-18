@@ -1,6 +1,6 @@
 namespace Minsk.CodeAnalysis.Syntax
 {
-    internal static class SyntaxFacts
+    public static class SyntaxFacts
     {
         public static int GetUnaryOperatorPrecedence(this SyntaxKind kind)
         {
@@ -52,6 +52,43 @@ namespace Minsk.CodeAnalysis.Syntax
                     return SyntaxKind.FalseKeyword;
                 default:
                     return SyntaxKind.IdentifierToken;
+            }
+        }
+
+        public static string GetText(SyntaxKind kind)
+        {
+            switch (kind)
+            {
+                case SyntaxKind.PlusToken:
+                    return "+";
+                case SyntaxKind.MinusToken:
+                    return "-";
+                case SyntaxKind.StarToken:
+                    return "*";
+                case SyntaxKind.SlashToken:
+                    return "/";
+                case SyntaxKind.OpenParenthesisToken:
+                    return "(";
+                case SyntaxKind.CloseParenthesisToken:
+                    return ")";
+                case SyntaxKind.BangToken:
+                    return "!";
+                case SyntaxKind.EqualsToken:
+                    return "=";
+                case SyntaxKind.NotEqualsToken:
+                    return "!=";
+                case SyntaxKind.EqualsEqualsToken:
+                    return "==";
+                case SyntaxKind.AmpersandAmpersandToken:
+                    return "&&";
+                case SyntaxKind.PipePipeToken:
+                    return "||";
+                case SyntaxKind.TrueKeyword:
+                    return "true";
+                case SyntaxKind.FalseKeyword:
+                    return "false";
+                default:
+                    return null;
             }
         }
     }
