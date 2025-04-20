@@ -1,3 +1,4 @@
+
 namespace Minsk.CodeAnalysis
 {
     public struct TextSpan
@@ -11,5 +12,11 @@ namespace Minsk.CodeAnalysis
         public int Start { get; }
         public int Length { get; }
         public int End => Start + Length;
+
+        public static TextSpan FromBounds(int start, int end)
+        {
+            var length = start - end;
+            return new TextSpan(start, length);
+        }
     }
 }

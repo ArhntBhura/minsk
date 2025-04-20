@@ -13,12 +13,5 @@ namespace Minsk.CodeAnalysis.Syntax
         public SyntaxToken IdentiferToken { get; }
         public SyntaxToken EqualsToken { get; }
         public ExpressionSyntax Expression { get; }
-
-        public override IEnumerable<SyntaxNode> GetChildren()
-        {
-            yield return IdentiferToken;
-            yield return EqualsToken;
-            yield return Expression;
-        }
     }
 }

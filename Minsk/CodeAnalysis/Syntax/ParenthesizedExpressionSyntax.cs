@@ -14,12 +14,5 @@ namespace Minsk.CodeAnalysis.Syntax
         public ExpressionSyntax Expression { get; }
 
         public override SyntaxKind Kind => SyntaxKind.ParenthesizedExpression;
-
-        public override IEnumerable<SyntaxNode> GetChildren()
-        {
-            yield return Left;
-            yield return Expression;
-            yield return Right;
-        }
     }
 }
