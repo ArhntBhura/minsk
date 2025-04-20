@@ -8,7 +8,7 @@ namespace Minsk.CodeAnalysis.Binding
         }
 
         public override Type Type => Variable.Type;
-        public override BoundNodekind Kind => BoundNodekind.NameExpression;
+        public override BoundNodekind Kind => BoundNodekind.VariableExpression;
         public VariableSymbol Variable { get; }
     }
 
