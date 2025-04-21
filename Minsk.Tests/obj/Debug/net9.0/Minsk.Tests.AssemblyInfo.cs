@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Minsk.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+28cad33f6ad2879ae709f1c54a2254eba50fea32")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5a8354af07343c8bd02dd955d2def1e671757452")]
 [assembly: System.Reflection.AssemblyProductAttribute("Minsk.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Minsk.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
