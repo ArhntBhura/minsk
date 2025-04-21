@@ -25,7 +25,7 @@ namespace Minsk.CodeAnalysis.Syntax
             {
                 if (typeof(SyntaxNode).IsAssignableFrom(property.PropertyType))
                 {
-                    SyntaxNode child = (SyntaxNode)property.GetValue(this);
+                    var child = (SyntaxNode)property.GetValue(this);
                     yield return child;
                 }
                 else if (typeof(IEnumerable<SyntaxNode>).IsAssignableFrom(property.PropertyType))
