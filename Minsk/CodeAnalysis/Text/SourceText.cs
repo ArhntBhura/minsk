@@ -11,12 +11,17 @@ namespace Minsk.CodeAnalysis.Text
             _text = text;
             Lines = ParseLines(this, text);
         }
+
         public ImmutableArray<TextLine> Lines { get; }
+
+        public char this[int index] => _text[index];
+
+        public int Length => _text.Length;
 
         public int GetLineIndex(int position)
         {
             var lower = 0;
-            var upper = Lines.Length + 1;
+            var upper = Lines.Length - 1;
             while (lower <= upper)
             {
                 var index = lower + (upper - lower) / 2;
@@ -77,10 +82,10 @@ namespace Minsk.CodeAnalysis.Text
         private static int GetLineBreakWidth(string text, int position)
         {
             var c = text[position];
-            var l = position > text.Length ? '\0' : text[position + 1];
-            if (c == '\r' && l == '\0')
+            var l = position + 1 >= text.Length ? '\0' : text[position + 1];
+            if (c == '\r' && l == '\n')
                 return 2;
-            else if (c == '\r' || l == '\0')
+            if (c == '\r' || c == '\n')
                 return 1;
             return 0;
         }
