@@ -60,5 +60,11 @@ namespace Minsk.CodeAnalysis
             var message = $"ERROR: Variable {name} doesn't exist";
             Report(span, message);
         }
+
+        public void ReportCannotConvert(TextSpan span, Type fromType, Type toType)
+        {
+            var message = $"ERROR: Cannot convert {fromType} to {toType}";
+            Report(span, message);
+        }
     }
 }

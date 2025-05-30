@@ -54,11 +54,11 @@ namespace Minsk.CodeAnalysis.Syntax
             return new SyntaxToken(kind, Current.Position, null, null);
         }
 
-        public SyntaxTree Parse()
+        public CompilationUnitSyntax ParseCompilationUnit()
         {
             var expression = ParseExpression();
             var endOfFileToken = MatchToken(SyntaxKind.EndOfFileToken);
-            return new SyntaxTree(_text, _diagnostics.ToImmutableArray(), expression, endOfFileToken);
+            return new CompilationUnitSyntax(expression, endOfFileToken);
         }
 
         private ExpressionSyntax ParseExpression()
@@ -72,7 +72,7 @@ namespace Minsk.CodeAnalysis.Syntax
             {
                 var identifierToken = NextToken();
                 var operatorToken = NextToken();
-                var right = ParsePrimaryExpression();
+                var right = ParseAssignmentExpression();
                 return new AssignmentExpressionSyntax(identifierToken, operatorToken, right);
             }
 
@@ -116,11 +116,11 @@ namespace Minsk.CodeAnalysis.Syntax
 
                 case SyntaxKind.NumberToken:
                     return ParseNumberLiteral();
+
                 case SyntaxKind.IdentifierToken:
                 default:
                     return ParseNameExpression();
             }
-
         }
 
         private ExpressionSyntax ParseNumberLiteral()
