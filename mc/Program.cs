@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq.Expressions;
-using Microsoft.VisualBasic;
-using Minsk.CodeAnalysis;
+﻿using Minsk.CodeAnalysis;
 using Minsk.CodeAnalysis.Syntax;
 using System.Text;
 using Minsk.CodeAnalysis.Text;
@@ -15,6 +12,8 @@ namespace Minsk
             var showTree = false;
             var variables = new Dictionary<VariableSymbol, object>();
             var textBuilder = new StringBuilder();
+            Compilation previous = null;
+
             while (true)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -46,6 +45,12 @@ namespace Minsk
                         Console.Clear();
                         continue;
                     }
+
+                    else if (input == "#reset")
+                    {
+                        previous = null;
+                        continue;
+                    }
                 }
 
                 textBuilder.AppendLine(input);
@@ -56,7 +61,7 @@ namespace Minsk
                 if (!isBlank && syntaxTree.Diagnostics.Any())
                     continue;
 
-                var compilation = new Compilation(syntaxTree);
+                var compilation = previous == null ? new Compilation(syntaxTree) : previous.ContinueWith(syntaxTree);
                 var result = compilation.Evaluate(variables);
 
                 var diagnostics = result.Diagnostics;
@@ -73,6 +78,7 @@ namespace Minsk
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine(result.Value);
                     Console.ResetColor();
+                    previous = compilation;
                 }
 
                 else
