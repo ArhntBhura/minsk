@@ -55,7 +55,7 @@ namespace Minsk.CodeAnalysis
             Report(span, message);
         }
 
-        internal void ReportUndefinedName(TextSpan span, string name)
+        public void ReportUndefinedName(TextSpan span, string name)
         {
             var message = $"ERROR: Variable {name} doesn't exist";
             Report(span, message);
@@ -64,6 +64,18 @@ namespace Minsk.CodeAnalysis
         public void ReportCannotConvert(TextSpan span, Type fromType, Type toType)
         {
             var message = $"ERROR: Cannot convert {fromType} to {toType}";
+            Report(span, message);
+        }
+
+        public void ReportVariableAlreadyDeclared(TextSpan span, string name)
+        {
+            var message = $"ERROR: Variable {name} is already declared";
+            Report(span, message);
+        }
+
+        public void ReportCannotAssign(TextSpan span, string name)
+        {
+            var message = $"ERROR: Variable {name} is-readOnly, it cannot be assigned.";
             Report(span, message);
         }
     }

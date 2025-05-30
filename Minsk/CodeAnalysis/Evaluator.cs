@@ -28,6 +28,9 @@ namespace Minsk.CodeAnalysis
                 case BoundNodekind.BlockStatement:
                     EvaluateBlockStatement((BoundBlockStatement)node);
                     break;
+                case BoundNodekind.VariableDeclaration:
+                    EvaluateVariableDeclaration((BoundVariableDeclaration)node);
+                    break;
                 case BoundNodekind.ExpressionStatement:
                     EvaluateExpressionStatement((BoundExpressionStatement)node);
                     break;
@@ -40,6 +43,13 @@ namespace Minsk.CodeAnalysis
         {
             foreach (var statement in node.Statements)
                 EvaluateStatement(statement);
+        }
+
+        private void EvaluateVariableDeclaration(BoundVariableDeclaration node)
+        {
+            var value = EvaluateExpression(node.Initializer);
+            _variables[node.Variable] = value;
+            _lastValue = value;
         }
 
         private void EvaluateExpressionStatement(BoundExpressionStatement node)
