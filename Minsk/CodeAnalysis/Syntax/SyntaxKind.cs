@@ -34,7 +34,9 @@ namespace Minsk.CodeAnalysis.Syntax
         elseKeyword,
         LetKeyword,
         VarKeyword,
+        ToKeyword,
         WhileKeyword,
+        ForKeyword,
 
         // Nodes
         CompilationUnit,
@@ -45,6 +47,7 @@ namespace Minsk.CodeAnalysis.Syntax
         VariableDeclaration,
         IfStatement,
         WhileStatement,
+        ForStatement,
         ExpressionStatement,
 
         // Expressions

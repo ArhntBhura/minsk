@@ -1,3 +1,5 @@
+using System.Reflection.Metadata.Ecma335;
+
 namespace Minsk.CodeAnalysis.Syntax
 {
     public static class SyntaxFacts
@@ -82,8 +84,12 @@ namespace Minsk.CodeAnalysis.Syntax
                     return SyntaxKind.LetKeyword;
                 case "var":
                     return SyntaxKind.VarKeyword;
+                case "to":
+                    return SyntaxKind.ToKeyword;
                 case "while":
                     return SyntaxKind.WhileKeyword;
+                case "for":
+                    return SyntaxKind.ForKeyword;
                 default:
                     return SyntaxKind.IdentifierToken;
             }
@@ -141,8 +147,12 @@ namespace Minsk.CodeAnalysis.Syntax
                     return "let";
                 case SyntaxKind.VarKeyword:
                     return "var";
+                case SyntaxKind.ToKeyword:
+                    return "to";
                 case SyntaxKind.WhileKeyword:
                     return "while";
+                case SyntaxKind.ForKeyword:
+                    return "for";
                 default:
                     return null;
             }

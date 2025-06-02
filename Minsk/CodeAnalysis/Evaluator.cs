@@ -37,6 +37,9 @@ namespace Minsk.CodeAnalysis
                 case BoundNodekind.WhileStatement:
                     EvaluateWhileStatement((BoundWhileStatement)node);
                     break;
+                case BoundNodekind.ForStatement:
+                    EvaluateForStatement((BoundForStatement)node);
+                    break;
                 case BoundNodekind.ExpressionStatement:
                     EvaluateExpressionStatement((BoundExpressionStatement)node);
                     break;
@@ -71,6 +74,17 @@ namespace Minsk.CodeAnalysis
         {
             while ((bool)EvaluateExpression(node.Condition))
                 EvaluateStatement(node.Body);
+        }
+
+        private void EvaluateForStatement(BoundForStatement node)
+        {
+            var LowerBound = (int)EvaluateExpression(node.LowerBound);
+            var upperBound = (int)EvaluateExpression(node.UpperBound);
+            for (int i = LowerBound; i <= upperBound; i++)
+            {
+                _variables[node.Variable] = i;
+                EvaluateStatement(node.Body);
+            }
         }
 
         private void EvaluateExpressionStatement(BoundExpressionStatement node)

@@ -42,6 +42,7 @@ namespace Minsk.Tests.CodeAnalysis.Syntax
         [InlineData("{ var a = 0 if a == 0 a = 10 else a = 5 a }", 10)]
         [InlineData("{ var a = 0 if a == 4 a = 10 else a = 5 a }", 5)]
         [InlineData("{ var i = 10 var result = 0 while i > 0 { result = result + i i = i - 1 } result }", 55)]
+        [InlineData("{ var result = 0 for i = 1 to 10 { result = result + i } result }", 55)]
         public void Evaluator_Evaluates_Expression(string text, object expectedValue)
         {
             AssertValue(text, expectedValue);
@@ -69,7 +70,115 @@ namespace Minsk.Tests.CodeAnalysis.Syntax
         }
 
         [Fact]
-        public void Evaluator_Assigned_Reports_Undefined()
+        public void Evaluator_IfStatement_Reports_CannotConvert()
+        {
+            var text = @"
+                {
+                    var x = 0
+                    if [10]
+                        x = 10
+                }
+            ";
+
+            var diagnostics = @"
+                ERROR: Cannot convert System.Int32 to System.Boolean
+            ";
+
+            AssertDiagnostics(text, diagnostics);
+        }
+
+        [Fact]
+        public void Evaluator_WhileStatement_Reports_CannotConvert()
+        {
+            var text = @"
+                {
+                    var x = 0
+                    while [10]
+                        x = 10
+                }
+            ";
+
+            var diagnostics = @"
+                ERROR: Cannot convert System.Int32 to System.Boolean
+            ";
+
+            AssertDiagnostics(text, diagnostics);
+        }
+
+        [Fact]
+        public void Evaluator_ForStatement_Reports_CannotConvert_LowerBound()
+        {
+            var text = @"
+                {
+                    var result = 0
+                    for i = [false] to 10
+                        result = result + i
+                }
+            ";
+
+            var diagnostics = @"
+                ERROR: Cannot convert System.Boolean to System.Int32
+            ";
+
+            AssertDiagnostics(text, diagnostics);
+        }
+
+        [Fact]
+        public void Evaluator_ForStatement_Reports_CannotConvert_UpperBound()
+        {
+            var text = @"
+                {
+                    var result = 0
+                    for i = 1 to [true]
+                        result = result + i
+                }
+            ";
+
+            var diagnostics = @"
+                ERROR: Cannot convert System.Boolean to System.Int32
+            ";
+
+            AssertDiagnostics(text, diagnostics);
+        }
+
+        [Fact]
+        public void Evaluator_UnaryExpression_Reports_Undefined()
+        {
+            var text = @"[+]true";
+
+            var diagnostics = @"
+                ERROR: The unary operator + is not defined for operand System.Boolean
+            ";
+
+            AssertDiagnostics(text, diagnostics);
+        }
+
+        [Fact]
+        public void Evaluator_BinaryExpression_Reports_Undefined()
+        {
+            var text = @"10 [*] true";
+
+            var diagnostics = @"
+                ERROR: Binary Operator * is not defined for operand System.Int32 and operand System.Boolean
+            ";
+
+            AssertDiagnostics(text, diagnostics);
+        }
+
+        [Fact]
+        public void Evaluator_NameExpression_Reports_Undefined()
+        {
+            var text = @"[x] * 10";
+
+            var diagnostics = @"
+                Variable x doesn't exist
+            ";
+
+            AssertDiagnostics(text, diagnostics);
+        }
+
+        [Fact]
+        public void Evaluator_AssignmentExpression_Reports_Undefined()
         {
             var text = @"[x] = 10";
 
@@ -81,7 +190,7 @@ namespace Minsk.Tests.CodeAnalysis.Syntax
         }
 
         [Fact]
-        public void Evaluator_Assigned_Reports_CannotAssign()
+        public void Evaluator_AssignmentExpression_Reports_CannotAssign()
         {
             var text = @"
                 {
@@ -98,7 +207,7 @@ namespace Minsk.Tests.CodeAnalysis.Syntax
         }
 
         [Fact]
-        public void Evaluator_Assigned_Reports_CannotConvert()
+        public void Evaluator_AssignmentExpression_Reports_CannotConvert()
         {
             var text = @"
                 {
@@ -114,29 +223,6 @@ namespace Minsk.Tests.CodeAnalysis.Syntax
             AssertDiagnostics(text, diagnostics);
         }
 
-        [Fact]
-        public void Evaluator_Unary_Reports_Undefined()
-        {
-            var text = @"[+]true";
-
-            var diagnostics = @"
-                ERROR: The unary operator + is not defined for operand System.Boolean
-            ";
-
-            AssertDiagnostics(text, diagnostics);
-        }
-
-        [Fact]
-        public void Evaluator_Binary_Reports_Undefined()
-        {
-            var text = @"10 [*] true";
-
-            var diagnostics = @"
-                ERROR: Binary Operator * is not defined for operand System.Int32 and operand System.Boolean
-            ";
-
-            AssertDiagnostics(text, diagnostics);
-        }
 
         private static void AssertValue(string text, object expectedValue)
         {
