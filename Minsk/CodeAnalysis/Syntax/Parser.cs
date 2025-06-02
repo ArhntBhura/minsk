@@ -73,6 +73,8 @@ namespace Minsk.CodeAnalysis.Syntax
                     return ParseVariableDeclaration();
                 case SyntaxKind.IfKeyword:
                     return ParseIfStatement();
+                case SyntaxKind.WhileKeyword:
+                    return ParseWhileStatement();
                 default:
                     return ParseExpressionStatement();
             }
@@ -119,6 +121,15 @@ namespace Minsk.CodeAnalysis.Syntax
             var keyword = MatchToken(SyntaxKind.elseKeyword);
             var statement = ParseStatement();
             return new ElseClauseSyntax(keyword, statement);
+        }
+
+        private WhileStatementSyntax ParseWhileStatement()
+        {
+            var keyword = MatchToken(SyntaxKind.WhileKeyword);
+            var condition = ParseExpression();
+            var statement = ParseStatement();
+
+            return new WhileStatementSyntax(keyword, condition, statement);
         }
 
         private ExpressionStatementSyntax ParseExpressionStatement()

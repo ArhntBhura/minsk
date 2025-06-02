@@ -4,9 +4,10 @@ namespace Minsk.CodeAnalysis.Binding
     {
         // Statements
         BlockStatement,
-        ExpressionStatement,
-        IfStatement,
         VariableDeclaration,
+        IfStatement,
+        WhileStatement,
+        ExpressionStatement,
 
         // Expressions
         UnaryExpression,
