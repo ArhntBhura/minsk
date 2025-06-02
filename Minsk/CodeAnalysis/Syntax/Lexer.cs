@@ -83,6 +83,30 @@ namespace Minsk.CodeAnalysis.Syntax
                         _kind = SyntaxKind.NotEqualsToken;
                     }
                     break;
+                case '>':
+                    _position++;
+                    if (Current != '=')
+                    {
+                        _kind = SyntaxKind.GreaterToken;
+                    }
+                    else
+                    {
+                        _position++;
+                        _kind = SyntaxKind.GreaterorEqualsToken;
+                    }
+                    break;
+                case '<':
+                    _position++;
+                    if (Current != '=')
+                    {
+                        _kind = SyntaxKind.LessToken;
+                    }
+                    else
+                    {
+                        _position++;
+                        _kind = SyntaxKind.LessorEqualsToken;
+                    }
+                    break;
                 case '&':
                     _position++;
                     if (Current == '&')
