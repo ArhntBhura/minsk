@@ -6,7 +6,6 @@ namespace Minsk.CodeAnalysis.Binding
     internal sealed class Binder
     {
         private readonly DiagnosticBag _diagnostics = new DiagnosticBag();
-
         private BoundScope _scope;
 
         public Binder(BoundScope parent)

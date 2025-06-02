@@ -32,14 +32,14 @@ namespace Minsk.CodeAnalysis
 
         public void ReportBadCharacter(int position, char character)
         {
-            var message = $"Error : bad character in input: `{character}`.";
+            var message = $"ERROR : bad character in input: `{character}`.";
             TextSpan span = new TextSpan(position, 1);
             Report(span, message);
         }
 
         public void ReportUnexpectedToken(TextSpan span, SyntaxKind actualKind, SyntaxKind expectedKind)
         {
-            var message = $"Error: Unexpected token <{actualKind}>, expected <{expectedKind}>.";
+            var message = $"ERROR: Unexpected token <{actualKind}>, expected <{expectedKind}>.";
             Report(span, message);
         }
 
@@ -75,7 +75,7 @@ namespace Minsk.CodeAnalysis
 
         public void ReportCannotAssign(TextSpan span, string name)
         {
-            var message = $"ERROR: Variable {name} is-readOnly, it cannot be assigned.";
+            var message = $"ERROR: Variable {name} is-readOnly, it cannot be assigned to.";
             Report(span, message);
         }
     }

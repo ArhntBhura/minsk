@@ -26,6 +26,7 @@ namespace Minsk.CodeAnalysis.Binding
         {
             if (_variables.TryGetValue(name, out variable))
                 return true;
+
             if (Parent == null)
                 return false;
 
