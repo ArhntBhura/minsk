@@ -187,6 +187,11 @@ namespace Minsk.CodeAnalysis.Binding
         private BoundExpression BindNameExpression(NameExpressionSyntax syntax)
         {
             var name = syntax.IdentiferToken.Text;
+            if (string.IsNullOrEmpty(name))
+            {
+                return new BoundLiteralExpression(0);
+            }
+
             if (!_scope.TryLookup(name, out var variable))
             {
                 _diagnostics.ReportUndefinedName(syntax.IdentiferToken.Span, name);

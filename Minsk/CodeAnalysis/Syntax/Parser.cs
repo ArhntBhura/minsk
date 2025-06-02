@@ -90,8 +90,14 @@ namespace Minsk.CodeAnalysis.Syntax
             var openBraceToken = MatchToken(SyntaxKind.OpenBraceToken);
             while (Current.Kind != SyntaxKind.EndOfFileToken && Current.Kind != SyntaxKind.CloseBraceToken)
             {
+                var startToken = Current;
                 var statement = ParseStatement();
                 statements.Add(statement);
+
+
+                //This line is typically for parser to not get stuck in infinite loop.
+                if (Current == startToken)
+                    NextToken();
             }
             var closeBraceToken = MatchToken(SyntaxKind.CloseBraceToken);
             return new BlockStatementSyntax(openBraceToken, statements.ToImmutable(), closeBraceToken);
