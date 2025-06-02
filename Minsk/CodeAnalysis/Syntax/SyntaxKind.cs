@@ -30,16 +30,20 @@ namespace Minsk.CodeAnalysis.Syntax
         //Keywords
         TrueKeyword,
         FalseKeyword,
+        IfKeyword,
+        elseKeyword,
         LetKeyword,
         VarKeyword,
 
         // Nodes
         CompilationUnit,
+        ElseClause,
 
         // Statements
         BlockStatement,
-        ExpressionStatement,
         VariableDeclaration,
+        IfStatement,
+        ExpressionStatement,
 
         // Expressions
         LiteralExpression,

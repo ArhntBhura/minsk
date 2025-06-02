@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using System.Runtime.InteropServices;
 using Minsk.CodeAnalysis.Text;
 
 namespace Minsk.CodeAnalysis.Syntax
@@ -70,11 +71,12 @@ namespace Minsk.CodeAnalysis.Syntax
                 case SyntaxKind.LetKeyword:
                 case SyntaxKind.VarKeyword:
                     return ParseVariableDeclaration();
+                case SyntaxKind.IfKeyword:
+                    return ParseIfStatement();
                 default:
                     return ParseExpressionStatement();
             }
         }
-
 
         private BlockStatementSyntax ParseBlockStatement()
         {
@@ -98,6 +100,25 @@ namespace Minsk.CodeAnalysis.Syntax
             var equalsToken = MatchToken(SyntaxKind.EqualsToken);
             var initializer = ParseExpression();
             return new VariableDeclarationSyntax(keyword, identifier, equalsToken, initializer);
+        }
+
+        private IfStatementSyntax ParseIfStatement()
+        {
+            var keyword = MatchToken(SyntaxKind.IfKeyword);
+            var condition = ParseExpression();
+            var thenStatement = ParseStatement();
+            var elseClause = ParseElseClause();
+            return new IfStatementSyntax(keyword, condition, thenStatement, elseClause);
+        }
+
+        private ElseClauseSyntax ParseElseClause()
+        {
+            if (Current.Kind != SyntaxKind.elseKeyword)
+                return null;
+
+            var keyword = MatchToken(SyntaxKind.elseKeyword);
+            var statement = ParseStatement();
+            return new ElseClauseSyntax(keyword, statement);
         }
 
         private ExpressionStatementSyntax ParseExpressionStatement()

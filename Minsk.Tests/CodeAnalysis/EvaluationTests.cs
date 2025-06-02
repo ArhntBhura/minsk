@@ -37,6 +37,10 @@ namespace Minsk.Tests.CodeAnalysis.Syntax
         [InlineData("!false", true)]
         [InlineData("!true", false)]
         [InlineData("{ var a = 0 (a = 10) * a }", 100)]
+        [InlineData("{ var a = 0 if a == 0 a = 10 a }", 10)]
+        [InlineData("{ var a = 0 if a == 4 a = 10 a }", 0)]
+        [InlineData("{ var a = 0 if a == 0 a = 10 else a = 5 a }", 10)]
+        [InlineData("{ var a = 0 if a == 4 a = 10 else a = 5 a }", 5)]
         public void Evaluator_Evaluates_Expression(string text, object expectedValue)
         {
             AssertValue(text, expectedValue);
