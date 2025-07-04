@@ -55,6 +55,14 @@ namespace Minsk.CodeAnalysis.Syntax
                     _position++;
                     _kind = SyntaxKind.SlashToken;
                     break;
+                case '~':
+                    _position++;
+                    _kind = SyntaxKind.TildeToken;
+                    break;
+                case '^':
+                    _position++;
+                    _kind = SyntaxKind.HatToken;
+                    break;
                 case '(':
                     _position++;
                     _kind = SyntaxKind.OpenParenthesisToken;
@@ -109,7 +117,11 @@ namespace Minsk.CodeAnalysis.Syntax
                     break;
                 case '&':
                     _position++;
-                    if (Current == '&')
+                    if (Current != '&')
+                    {
+                        _kind = SyntaxKind.AmpersandToken;
+                    }
+                    else
                     {
                         _position++;
                         _kind = SyntaxKind.AmpersandAmpersandToken;
@@ -117,7 +129,11 @@ namespace Minsk.CodeAnalysis.Syntax
                     break;
                 case '|':
                     _position++;
-                    if (Current == '|')
+                    if (Current != '|')
+                    {
+                        _kind = SyntaxKind.PipeToken;
+                    }
+                    else
                     {
                         _position++;
                         _kind = SyntaxKind.PipePipeToken;
