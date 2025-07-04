@@ -39,6 +39,11 @@ namespace Minsk.CodeAnalysis
             return new Compilation(this, syntaxTree);
         }
 
+        public void EmitTree(TextWriter writer)
+        {
+            GlobalScope.Statement.WriteTo(writer);
+        }
+
         public EvaluationResult Evaluate(Dictionary<VariableSymbol, object> variables)
         {
             var diagnostics = SyntaxTree.Diagnostics.Concat(GlobalScope.Diagnostics).ToImmutableArray();
