@@ -1,3 +1,5 @@
+using System.Reflection.Emit;
+
 namespace Minsk.CodeAnalysis
 {
     public sealed class VariableSymbol
@@ -12,5 +14,7 @@ namespace Minsk.CodeAnalysis
         public string Name { get; }
         public bool IsReadOnly { get; }
         public Type Type { get; }
+        public override string ToString() => Name;
+
     }
 }

@@ -70,9 +70,6 @@ namespace Minsk
                     continue;
 
                 var compilation = previous == null ? new Compilation(syntaxTree) : previous.ContinueWith(syntaxTree);
-                var result = compilation.Evaluate(variables);
-
-                var diagnostics = result.Diagnostics;
 
                 if (showTree)
                 {
@@ -87,6 +84,9 @@ namespace Minsk
                     compilation.EmitTree(Console.Out);
                     Console.ResetColor();
                 }
+
+                var result = compilation.Evaluate(variables);
+                var diagnostics = result.Diagnostics;
 
                 if (!diagnostics.Any())
                 {
