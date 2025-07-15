@@ -1,4 +1,4 @@
-# Minsk 🛠️
+# Minsk
 
 **Minsk** is a handwritten compiler and interpreter for a custom programming language, written in C#. It is designed to teach and demonstrate key concepts of compiler construction including:
 
@@ -13,7 +13,7 @@ Inspired by educational compiler projects, Minsk walks through each stage of lan
 
 ---
 
-## 🔍 Features
+## Features
 
 - Custom syntax highlighting and lexical tokenization
 - Recursive descent parser generating syntax trees
