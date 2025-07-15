@@ -15,12 +15,12 @@ Inspired by educational compiler projects, Minsk walks through each stage of lan
 
 ## 🔍 Features
 
-- ✅ Custom syntax highlighting and lexical tokenization
-- ✅ Recursive descent parser generating syntax trees
-- ✅ Binder to resolve symbols and perform type checking
-- ✅ Intermediate lowering for future code generation
-- ✅ Evaluation engine for direct execution of expressions
-- ✅ Terminal-based REPL with command history and diagnostics
-- ✅ Easily extendable with more language features
+- Custom syntax highlighting and lexical tokenization
+- Recursive descent parser generating syntax trees
+- Binder to resolve symbols and perform type checking
+- Intermediate lowering for future code generation
+- Evaluation engine for direct execution of expressions
+- Terminal-based REPL with command history and diagnostics
+- Easily extendable with more language features
 
 ---
