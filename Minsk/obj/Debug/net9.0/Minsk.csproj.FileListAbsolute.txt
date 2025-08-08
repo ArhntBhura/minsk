@@ -10,3 +10,15 @@
 /Users/mac/Desktop/minsk/Minsk/obj/Debug/net9.0/refint/Minsk.dll
 /Users/mac/Desktop/minsk/Minsk/obj/Debug/net9.0/Minsk.pdb
 /Users/mac/Desktop/minsk/Minsk/obj/Debug/net9.0/ref/Minsk.dll
+G:\minsk\Minsk\bin\Debug\net9.0\Minsk.deps.json
+G:\minsk\Minsk\bin\Debug\net9.0\Minsk.dll
+G:\minsk\Minsk\bin\Debug\net9.0\Minsk.pdb
+G:\minsk\Minsk\obj\Debug\net9.0\Minsk.GeneratedMSBuildEditorConfig.editorconfig
+G:\minsk\Minsk\obj\Debug\net9.0\Minsk.AssemblyInfoInputs.cache
+G:\minsk\Minsk\obj\Debug\net9.0\Minsk.AssemblyInfo.cs
+G:\minsk\Minsk\obj\Debug\net9.0\Minsk.csproj.CoreCompileInputs.cache
+G:\minsk\Minsk\obj\Debug\net9.0\Minsk.sourcelink.json
+G:\minsk\Minsk\obj\Debug\net9.0\Minsk.dll
+G:\minsk\Minsk\obj\Debug\net9.0\refint\Minsk.dll
+G:\minsk\Minsk\obj\Debug\net9.0\Minsk.pdb
+G:\minsk\Minsk\obj\Debug\net9.0\ref\Minsk.dll

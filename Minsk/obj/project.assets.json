@@ -8,25 +8,24 @@
     "net9.0": []
   },
   "packageFolders": {
-    "/Users/mac/.nuget/packages/": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/mac/Desktop/minsk/Minsk/Minsk.csproj",
+      "projectUniqueName": "G:\\minsk\\Minsk\\Minsk.csproj",
       "projectName": "Minsk",
-      "projectPath": "/Users/mac/Desktop/minsk/Minsk/Minsk.csproj",
-      "packagesPath": "/Users/mac/.nuget/packages/",
-      "outputPath": "/Users/mac/Desktop/minsk/Minsk/obj/",
+      "projectPath": "G:\\minsk\\Minsk\\Minsk.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "G:\\minsk\\Minsk\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/mac/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
-        "/usr/local/share/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -45,7 +44,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -66,7 +65,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

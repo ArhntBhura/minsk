@@ -47,7 +47,7 @@ namespace Minsk.CodeAnalysis
                     case BoundNodekind.ConditionalGotoStatement:
                         var cgs = (BoundConditionalGotoStatement)s;
                         var condition = (bool)EvaluateExpression(cgs.Condition);
-                        if (condition && !cgs.JumpIfFalse || !condition && cgs.JumpIfFalse)
+                        if (condition == cgs.JumpIfTrue)
                             index = labeltoIndex[cgs.Label];
                         else
                             index++;

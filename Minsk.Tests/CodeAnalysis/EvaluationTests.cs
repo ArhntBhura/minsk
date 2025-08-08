@@ -63,6 +63,7 @@ namespace Minsk.Tests.CodeAnalysis.Syntax
         [InlineData("{ var a = 0 if a == 4 a = 10 else a = 5 a }", 5)]
         [InlineData("{ var i = 10 var result = 0 while i > 0 { result = result + i i = i - 1 } result }", 55)]
         [InlineData("{ var result = 0 for i = 1 to 10 { result = result + i } result }", 55)]
+        [InlineData("{ var result = 10 for i = 1 to (result = result - 1) { } result }", 9)]
         public void Evaluator_Evaluates_Expression(string text, object expectedValue)
         {
             AssertValue(text, expectedValue);
